@@ -3,17 +3,19 @@
 #include <cstdint>
 #include <cmath>
 //=======================
+const int SIZE = 10;
 class Power	
 {
 public:
 
-	Power()
+	Power(double num1 = 0, double num2 = 0)
 		:
-	      num1(2.2)
-		, num2(4.2)	
+	      num1( num1)
+		, num2(num2)	
 	{}
 
-	void setNums(double a, double b);
+	void setNum1(double num1);
+	void setNum2(double num2);
 	double calculate();
 
 private:
@@ -23,9 +25,12 @@ private:
 
 };
 
-void Power::setNums(double a, double b)
+void Power::setNum1(double a)
 {
-	num1 = a;
+	num1 = a;	
+}
+void Power::setNum2(double b);
+{
 	num2 = b;
 }
 double Power::calculate()
@@ -39,11 +44,13 @@ double Power::calculate()
 class RGBA
 {
 public:
-	RGBA()
-	{
-		m_red = m_green = m_blue = 0; ///Как синтаксически реализовать этот способ инициализации во 2-м пути конструктора?
-		m_alpha = 255;
-	}
+	RGBA(std::uint8_t m_red =  0, std::uint8_t m_green =  0, std::uint8_t m_blue =  0, std::uint8_t m_alpha =  255)
+	     :
+		 m_red(m_red),
+		 m_green(m_green),
+		 m_blue(m_blue),
+		 m_alpha(m_alpha)
+	{	}
 
 	RGBA(std::uint8_t a, std::uint8_t b, std::uint8_t c, std::uint8_t d)
 		:
@@ -74,9 +81,9 @@ void RGBA::print()
 class Stack
 {
 public:
-	Stack()      // Нужно ли здесь инициализировать? Или достаточно метода reset() ? 
-		         // Просто в ресет у меня цикл до "len", чтобы лишний раз не делать for на все 10 элементов
-		: arr{0} 
+	Stack() 		         
+		:
+		  arr{0} 
 	    , len(0)
 	{}             
 	void reset();
@@ -85,7 +92,7 @@ public:
 	void print();
 
 private:
-	int arr[10];
+	int arr[SIZE];
 	int len;
 };
 
