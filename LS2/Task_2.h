@@ -12,14 +12,14 @@ public:
 		color(color),
 		name(name)
 	{}
-	std::string getName();
-	std::string getColor();
+	const std::string& getName();
+	const std::string& getColor();
 protected:
 	std::string name;
 	std::string color;
 };
-std::string Fruit::getName() { return name; }
-std::string Fruit::getColor() { return color; }
+const std::string& Fruit::getName() { return name; }
+const std::string& Fruit::getColor() { return color; }
 
 //
 // --------- class Apple

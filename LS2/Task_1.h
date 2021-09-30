@@ -19,16 +19,16 @@ public:
 	void setAge(short int age);
 	void setWeight(float weight);
 
-	std::string getName();
-	std::string getSex();
+	const std::string& getName();
+	const std::string& getSex();
 	int getAge();
 	int getWeight();
 
 protected:
 	std::string name{ "Undefined" };
 	std::string sex{ "Undefined" };
-	short int age{0};
-	float weight{0.0};
+	short int age{ 0 };
+	float weight{ 0.0 };
 };
 
 //
@@ -41,8 +41,8 @@ void Person::setWeight(float weight) { this->weight = weight; }
 //
 // --------- GETs
 //
-std::string Person::getName() { return name; };
-std::string Person::getSex() { return sex; };
+const std::string& Person::getName() { return name; };
+const std::string& Person::getSex() { return sex; };
 int Person::getAge() { return age; };
 int Person::getWeight() { return weight; };
 //
@@ -51,21 +51,21 @@ int Person::getWeight() { return weight; };
 class Student : public Person
 {
 public:
-	Student(){ };
+	Student() { };
 
 	Student(const std::string& name, const std::string& sex, short int age, float weight, std::size_t startYear, std::size_t endYear)
 		:
 		Person(name, sex, age, weight),
 		startYear(startYear),
-		endYear(endYear)		
+		endYear(endYear)
 	{}
 	void setStartYear(std::size_t startYear);
 	void setEndYear(std::size_t endYear);
 	void getInfo();
-	
+
 
 private:
-	std::size_t startYear{ 0 }, endYear{ 0 };	
+	std::size_t startYear{ 0 }, endYear{ 0 };
 };
 //
 // --------- SETs
@@ -82,7 +82,7 @@ void Student::getInfo()
 	std::cout << "Age - " << age << "\n";
 	std::cout << "Weight - " << weight << "\n";
 	std::cout << "Start year - " << startYear << "\n";
-	std::cout << "End year - " << endYear << "\n";	
+	std::cout << "End year - " << endYear << "\n";
 }
 //
 // --------- class CollectStudents
@@ -90,29 +90,26 @@ void Student::getInfo()
 class CollectStudents
 {
 public:
-	CollectStudents(){};
+	CollectStudents() {};
 	void addStudent(const Student& student);
 	void getStudent(const std::string& name);
 
 private:
-	std::vector<Student> stack;	
+	std::vector<Student> stack;
 };
 
 void CollectStudents::addStudent(const Student& student)
-{	
+{
 	stack.emplace_back(student);
 }
 
 
 void CollectStudents::getStudent(const std::string& name)
 {
-	std::string findName;
 	bool isStudent = false;
-
 	for (size_t i = 0; i < stack.size(); i++)
 	{
-		findName = stack[i].getName();
-		if (findName == name)
+		if (stack[i].getName() == name)
 		{
 			isStudent = true;
 			stack[i].getInfo();
@@ -120,17 +117,17 @@ void CollectStudents::getStudent(const std::string& name)
 			break;
 		}
 	}
-	if (!isStudent)	{ std::cout << "Student not found\n"; }
+	if (!isStudent) { std::cout << "Student not found\n"; }
 
-	
+
 }
 
 void run()
 {
 
 	CollectStudents collect;
-	std::string name;	
-	
+	std::string name;
+
 	collect.addStudent(Student("Ivan", "Male", 23, 107.4, 2015, 2020));
 	collect.addStudent(Student("Vasya", "Male", 21, 65.4, 2015, 2020));
 	collect.addStudent(Student("Petya", "Male", 17, 89.2, 2015, 2020));
