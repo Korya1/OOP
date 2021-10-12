@@ -6,9 +6,9 @@ template<typename T>
 class Pair1
 {
 public:
-	Pair1(T num1, T num2) : num1(num1), num2(num2) {};
-	T first() const { return num1; }
-	T second() const { return num2; }
+	Pair1(const T& num1, const T& num2) : num1(num1), num2(num2) {};
+	const T& first() const { return num1; }
+	const T& second() const { return num2; }
 private:
 	T num1;
 	T num2;
@@ -18,9 +18,9 @@ template<typename T, typename U>
 class Pair
 {
 public:
-	Pair(T num1, U num2) : num1(num1), num2(num2) {};
-	T first() const { return num1; }
-	U second() const { return num2; }
+	Pair(const T& num1, const U& num2) : num1(num1), num2(num2) {};
+	const T& first() const { return num1; }
+	const U& second() const { return num2; }
 private:
 	T num1;
 	U num2;

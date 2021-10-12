@@ -9,7 +9,7 @@ public:
 	virtual void IsHitting() = 0;
 	bool IsBoosted() 
 	{ 
-		if (getValue() > 21) { return true; }
+		if (getValue() > winSumm) { return true; }
 		return false; 
 	}
 
@@ -18,4 +18,6 @@ public:
 	virtual ~GenericPlayer() = default;
 protected:
 	std::string name{};
+private:
+	short int winSumm{ 21 };
 };
