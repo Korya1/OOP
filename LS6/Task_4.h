@@ -13,9 +13,9 @@ public:
 
 	virtual bool IsHitting() const override
 	{
-		const int TOTAL_H = 16;
+		const int MAX_VALUE = 16;
 
-		if (getHandValue() > TOTAL_H)
+		if (getHandValue() > MAX_VALUE)
 		{
 			return false;
 		}

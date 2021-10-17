@@ -7,3 +7,4 @@
 #include <limits>
 #include <cstdio>
 #include <sstream>
+#include <array>

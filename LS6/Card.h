@@ -61,11 +61,9 @@ private:
 }; 
 
 std::ostream& operator<<(std::ostream& out, const Card& card) 
-{
-	const int VALUE_ARR_SIZE = 13;
-	const int SUIT_ARR_SIZE = 4;
-	char valueArr[VALUE_ARR_SIZE] = {'A','2','3','4','5','6','7','8','9','10','J','Q','K'};
-	char suitArr[SUIT_ARR_SIZE] = { 'D','H','C','S'};	
+{		
+	const std::array<char, 13> valueArr = {'A','2','3','4','5','6','7','8','9','10','J','Q','K'};
+	const std::array<char, 4> suitArr = { 'D','H','C','S'};
 
 	if(card.isOpen)
 	{
